@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CITIES } from './cities';
 
 @Component({
   selector: 'my-app',
@@ -7,14 +8,5 @@ import { Component } from '@angular/core';
 
 export class AppComponent  {
   title = 'Best weather APP EVER';
-  cities: City[] = [
-    { id: 1, name: 'Kiev' },
-    { id: 2, name: 'London'},
-    { id: 3, name: 'New York'}
-  ];
-}
-
-export class City {
-  id: number;
-  name: string;
+  cities = CITIES;
 }
