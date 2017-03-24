@@ -12,13 +12,14 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
 var city_service_1 = require('./city.service');
+var city_details_component_1 = require('./city-details.component');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent],
+            declarations: [app_component_1.AppComponent, city_details_component_1.CityDetailsComponent],
             bootstrap: [app_component_1.AppComponent],
             providers: [city_service_1.CityService]
         }), 
