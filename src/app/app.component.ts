@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CITIES } from './cities';
+import { CityService } from './city.service';
 
 @Component({
   selector: 'my-app',
@@ -8,5 +8,8 @@ import { CITIES } from './cities';
 
 export class AppComponent  {
   title = 'Best weather APP EVER';
-  cities = CITIES;
+
+  constructor(private cityService: CityService) { }
+
+  cities = this.cityService.getCities();
 }
