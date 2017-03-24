@@ -1,4 +1,4 @@
 <h1>{{title}}</h1>
 <nav>
-  <span *ngFor="let city of cities"><a href="#">{{ city.name }}</a>&nbsp;</span>
+  <span *ngFor="let city of cities" (click)="onSelect(city)"><a href="#">{{ city.name }}</a>&nbsp;</span>
 </nav>

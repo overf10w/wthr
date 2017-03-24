@@ -16,6 +16,10 @@ var AppComponent = (function () {
         this.title = 'Best weather APP EVER';
         this.cities = this.cityService.getCities();
     }
+    AppComponent.prototype.onSelect = function (city) {
+        this.selectedCity = city;
+        console.log(this.selectedCity.name + ' selected');
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
