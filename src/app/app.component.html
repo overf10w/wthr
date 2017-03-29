@@ -2,4 +2,5 @@
 <nav>
   <span *ngFor="let city of cities" (click)="onSelect(city)"><a href="#">{{ city.name }}</a>&nbsp;</span>
   <city-details [city]="selectedCity"></city-details>
+  <forecast-details [forecast]="selectedForecast"></forecast-details>
 </nav>
