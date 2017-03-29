@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CityService } from './city.service';
 import { City } from './city';
+import {WeatherService} from './weather.service';
+// import {error} from "selenium-webdriver";
 
 @Component({
   selector: 'my-app',
@@ -11,13 +13,21 @@ export class AppComponent  {
   title = 'Best weather APP EVER';
 
   selectedCity: City;
-
-  constructor(private cityService: CityService) { }
+  errorMsg: any;
+  forecast: any;
 
   cities = this.cityService.getCities();
+
+  constructor(private cityService: CityService, private weatherService: WeatherService) { }
 
   onSelect(city: City): void {
     this.selectedCity = city;
     console.log(this.selectedCity.name + ' selected');
+    this.weatherService.getWeather()
+                       .subscribe(
+                         data => {
+                           this.forecast = data;
+                           console.log(this.forecast);
+                         }, error => this.errorMsg = <any>error);
   }
 }
