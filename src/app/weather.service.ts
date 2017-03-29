@@ -7,11 +7,13 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class WeatherService {
-  private url = 'https://api.darksky.net/forecast/3bfcfdfa160eee3357357a6c3c400e6d/50.401699,30.252512?units=ca';
+  url: string;
 
   constructor (private http: Http) {}
 
-  getWeather(): Observable<any[]> {
+  getWeather(latitude: number, longitude: number): Observable<any[]> {
+    this.url = 'https://api.darksky.net/forecast/3bfcfdfa160eee3357357a6c3c400e6d/' +
+               latitude.toString() + ',' + longitude.toString() + '?units=ca';
     console.log('1st line of HeroService.getData()');
     return this.http.get(this.url)
       .map((res) => {return res.json(); })

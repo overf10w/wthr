@@ -23,7 +23,7 @@ export class AppComponent  {
   onSelect(city: City): void {
     this.selectedCity = city;
     console.log(this.selectedCity.name + ' selected');
-    this.weatherService.getWeather()
+    this.weatherService.getWeather(this.selectedCity.latitude, this.selectedCity.longitude)
                        .subscribe(
                          data => {
                            this.forecast = data;
