@@ -5,6 +5,7 @@ import { AppComponent }  from './app.component';
 import { CityService } from './city.service';
 import { CityDetailsComponent } from './city-details.component';
 import { WeatherService } from './weather.service';
+
 import { HttpModule } from '@angular/http';
 import { ForecastDetailsComponent } from './forecast-details.component';
 

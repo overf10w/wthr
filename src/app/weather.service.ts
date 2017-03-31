@@ -24,11 +24,13 @@ export class WeatherService {
 
   private extractData(res: Response): Forecast {
     console.log(res.json());
+    // TODO remove maybe
     this.forecast = new Forecast();
 
     this.forecast.dailySummary = res.json().daily.summary;
     this.forecast.hourlySummary = res.json().hourly.summary;
     this.forecast.currentlySummary = res.json().currently.summary;
+    this.forecast.currentCelcius = res.json().currently.temperature;
 
     return this.forecast;
   }
