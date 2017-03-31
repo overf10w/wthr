@@ -1,19 +1,20 @@
 {
-  "data": [
-    {
-      "name": "Kiev",
-      "lat": 50.450100,
-      "lon": 30.523400
-    },
-    {
-      "name": "London",
-      "lat": 51.507351,
-      "lon": -0.127758
-    },
-    {
-      "name": "New York",
-      "lat": 40.712784,
-      "lon": -74.005941
-    }
-  ]
+  "kiev": {
+    "lat": 50.450100,
+    "lon": 30.523400,
+    "wikipedia":"Kiev",
+    "city":"Kiev"
+  },
+  "london": {
+    "lat":51.5,
+    "lon":-0.117,
+    "wikipedia":"London",
+    "city":"London"
+  },
+  "new_york": {
+    "lat": 40.712784,
+    "lon": -74.005941,
+    "wikipedia":"New York",
+    "city":"New York"
+  }
 }

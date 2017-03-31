@@ -9,29 +9,29 @@ import { City } from './city';
 
 @Injectable()
 export class CityService {
-  // city: City[];
   constructor (private http: Http) {}
 
   // <City[]> casting not needed. map() works with one el of sequence at a time (not the whole sequence)
   // Here, that one element happens to be an array of City - check cities.json
   getCities(): Observable<City[]> {
     return this.http.get('../api/cities.json')
-    // TODO make an app consume original cities.json (0)
       .map(this.extractData)
       .do(data => console.log(data))
       .catch(this.handleError);
   }
 
+  // TODO for...in, lodash, etc
   private extractData(res: Response): City[] {
-    return res.json().data.map(function (item: any) {
+    let citiesObj = res.json();
+
+    let citiesArr = Object.keys(citiesObj).map(function (key) {
       let city = new City();
-
-      city.name = item.name;
-      city.latitude = item.lat;
-      city.longitude = item.lon;
-
+      city.latitude = citiesObj[key].lat;
+      city.longitude = citiesObj[key].lon;
+      city.name = citiesObj[key].city;
       return city;
     });
+    return citiesArr;
   }
 
   private handleError (error: Response | any) {
