@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
 
   onSelect(city: City): void {
     this.selectedCity = city;
-    this.weatherService.getWeather(this.selectedCity.lat, this.selectedCity.lon)
+    this.weatherService.getWeather(this.selectedCity.latitude, this.selectedCity.longitude)
                        .subscribe(
                          data => {
                            this.selectedForecast = data;

@@ -1,5 +1,5 @@
 export class City {
   name: string;
-  lat: number;
-  lon: number;
+  latitude: number;
+  longitude: number;
 }

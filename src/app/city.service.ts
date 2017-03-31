@@ -9,30 +9,30 @@ import { City } from './city';
 
 @Injectable()
 export class CityService {
-  city: City[];
+  // city: City[];
   constructor (private http: Http) {}
 
   // <City[]> casting not needed. map() works with one el of sequence at a time (not the whole sequence)
   // Here, that one element happens to be an array of City - check cities.json
   getCities(): Observable<City[]> {
     return this.http.get('../api/cities.json')
-    // TODO make an app consume original cities.json (1)
-    // TODO change City model first and then map each el of response.json().data to become City object (0)
-      .map((response: Response) => <City[]>response.json().data)
+    // TODO make an app consume original cities.json (0)
+      .map(this.extractData)
       .do(data => console.log(data))
       .catch(this.handleError);
   }
 
-  // private extractData(res: Response): City[] {
-  //   console.log(res.json());
-  //   this.city = new Forecast();
-  //
-  //   this.forecast.dailySummary = res.json().daily.summary;
-  //   this.forecast.hourlySummary = res.json().hourly.summary;
-  //   this.forecast.currentlySummary = res.json().currently.summary;
-  //
-  //   return this.forecast;
-  // }
+  private extractData(res: Response): City[] {
+    return res.json().data.map(function (item: any) {
+      let city = new City();
+
+      city.name = item.name;
+      city.latitude = item.lat;
+      city.longitude = item.lon;
+
+      return city;
+    });
+  }
 
   private handleError (error: Response | any) {
     let errMsg: string;
