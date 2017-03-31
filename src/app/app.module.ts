@@ -1,13 +1,14 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+
+import { CityService } from './services/city.service';
+import { WeatherService } from './services/weather.service';
 
 import { AppComponent }  from './app.component';
-import { CityService } from './city.service';
 import { CityDetailsComponent } from './city-details.component';
-import { WeatherService } from './weather.service';
-
-import { HttpModule } from '@angular/http';
 import { ForecastDetailsComponent } from './forecast-details.component';
+
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule ],

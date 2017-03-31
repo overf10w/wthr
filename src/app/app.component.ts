@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { CityService } from './city.service';
+import { CityService } from './services/city.service';
 import { City } from './city';
-import { WeatherService } from './weather.service';
+import { WeatherService } from './services/weather.service';
 import { Forecast } from './forecast';
 // import {error} from "selenium-webdriver";
 
