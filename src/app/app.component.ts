@@ -11,7 +11,7 @@ import { Forecast } from './forecast';
 })
 export class AppComponent implements OnInit {
   title = 'Best weather APP EVER';
-
+  cityQuery: string;
   cities: City[];
   selectedCity: City;
   selectedForecast: Forecast;
@@ -31,13 +31,27 @@ export class AppComponent implements OnInit {
         error => this.errorMsg = <any>error
       );
   }
-
+  // TODO refactor whole class
   onSelect(city: City): void {
     this.selectedCity = city;
+
+    this.getSomeWeather();
+  }
+
+  selectFromSearch(): void {
+    this.selectedCity = this.cities.find(item => {
+      return item.name === this.cityQuery;
+    });
+    this.cityQuery = '';
+
+    this.getSomeWeather();
+  }
+
+  getSomeWeather(): void {
     this.weatherService.getWeather(this.selectedCity.latitude, this.selectedCity.longitude)
-                       .subscribe(
-                         data => {
-                           this.selectedForecast = data;
-                         }, error => this.errorMsg = <any>error);
+      .subscribe(
+        data => {
+          this.selectedForecast = data;
+        }, error => this.errorMsg = <any>error);
   }
 }

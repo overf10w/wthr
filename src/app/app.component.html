@@ -1,5 +1,10 @@
 <h1>{{title}}</h1>
 <nav>
+  <input [(ngModel)]="cityQuery" placeholder="search the city...">
+  <button (click)="selectFromSearch()">Find!</button><br>
+
+  <span>Your city search be like: {{cityQuery}}</span><br>
+
   <span *ngFor="let city of cities" (click)="onSelect(city)"><a href="#">{{ city.name }}</a>&nbsp;</span>
   <city-details [city]="selectedCity"></city-details>
   <forecast-details [forecast]="selectedForecast"></forecast-details>
